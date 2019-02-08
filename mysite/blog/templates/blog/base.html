@@ -12,10 +12,11 @@
 <div class="page-header">
     {% if user.is_authenticated %}
         Hi {{ user.username }}!
+        <p><a href="{% url 'logout' %}">logout</a></p>
         <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
     {% else %}
         <p>You are not logged in</p>
-  <a href="{% url 'login' %}">login</a>
+        <a href="{% url 'login' %}">login</a>
     {% endif %}
     <h1><a href="/">Django Girls Blog</a></h1>
 </div>
