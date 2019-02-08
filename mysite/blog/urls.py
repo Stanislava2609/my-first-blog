@@ -11,5 +11,6 @@ urlpatterns = [
     path('post/<int:pk>/edit/', views.post_edit, name='post_edit'),
     path('artem/', views.artem, name='artem'),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('', TemplateView.as_view(template_name='post_list.html'), name='home')
+    path('', TemplateView.as_view(template_name='post_list.html'), name='home'),
+    path('signup/', views.signup, name='signup')
 ]
