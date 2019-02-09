@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render
 from django.utils import timezone
@@ -64,7 +65,7 @@ def signup(request):
             my_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=my_password)
             login(request, user)
-            return redirect('index')
+            return redirect('/')
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
