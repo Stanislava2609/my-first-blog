@@ -4,6 +4,6 @@
     <h1>Сохдать пост</h1>
     <form method="POST" class="post-form" enctype="multipart/form-data" >{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Сохранить</button>
+        <button type="submit" class="btn btn-success">Сохранить</button>
     </form>
 {% endblock %}

@@ -2,20 +2,20 @@
 
 {% block content %}
     <div class="post">
+        <h1>{{ post.title }}</h1>
+        {% if user.is_authenticated %}
+            <a href="{% url 'post_edit' pk=post.pk %}" class="text-secondary">Редактировать <i class="far fa-edit"></i></a>
+        {% endif %}
         {% if post.published_date %}
-            <div class="date">
-                {{ post.published_date }}
+            <div class="text-muted">
+                <p >Опубликовано: {{ post.published_date }}</p>
             </div>
         {% endif %}
-        {% if user.is_authenticated %}
-            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        {% endif %}
-        <h1>{{ post.title }}</h1>
-        <div class="myclass">
-        <p>{{ post.text|linebreaksbr }}
-            {% if post.image %}
-                <img src="{{ post.image.url }}" width="100%"></p>
-            {% endif %}
+        <div class="myclass text-left">
+            <p>{{ post.text|linebreaksbr }}
+                {% if post.image %}
+                    <img src="{{ post.image.url }}" class="img-fluid rounded mx-auto d-block"></p>
+                {% endif %}
         </div>
 
     </div>

@@ -2,25 +2,61 @@
 <html>
 <head>
     <title>Django Girls blog</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Pacifico&amp;subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 </head>
 <body>
-<div class="page-header">
+{#<div class="page-header">#}
+{# <div class="float-right">#}
+{# {% if user.is_authenticated %}#}
+{# <p>Hi {{ user.username }}!</p>#}
+{# <p><a href="{% url 'logout' %}">logout</a></p>#}
+{# <a href="{% url 'post_new' %}" class="top-menu"><i class="fas fa-plus"></i></a>#}
+{# {% else %}#}
+{# <p>You are not logged in</p>#}
+{# <a href="{% url 'login' %}">login</a>#}
+{# {% endif %}#}
+{# </div>#}
+{# <h1><a href="/">Django Girls Blog</a></h1>#}
+{#</div>#}
+<nav class="navbar navbar-light page-header rounded-bottom shadow p-3">
+    <h1 class="navbar-bran"><a href="/">Django Girls Blog</a></h1>
     {% if user.is_authenticated %}
-        <p>Hi {{ user.username }}!</p>
-        <a href="{% url 'logout' %}" class="top-menu"><span class="glyphicon glyphicon-log-out"></span></a>
-        <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+        <div class="d-flex flex-row-reverse">
+            <div class="">
+                <a href="{% url 'post_new' %}" class="text-white">
+                    <i class="fas fa-plus fa-3x"></i>
+                </a>
+            </div>
+            <div class="mr-sm-4">
+                    <a href="{% url 'logout' %}" class="text-white">
+                        <i class="fas fa-sign-out-alt  fa-3x"></i>
+                    </a>
+            </div>
+            <div class="mr-sm-2">
+                <h2 class="text-white ">{{ user.username }}</h2>
+            </div>
+        </div>
     {% else %}
-        <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-log-in"></span></a>
-        <a href="{% url 'signup' %}" class="top-menu"><span class="glyphicon glyphicon-plus-sign"></span></a>
+        <form class="form-inline mt-2" action="{% url 'login' %}" method="get">
+            <div class="form-group">
+                <label for="staticEmail2" class="sr-only">Email</label>
+                <input type="text" class="form-control" id="staticEmail2" placeholder="Логин">
+            </div>
+            <div class="form-group mx-sm-3">
+                <label for="inputPassword2" class="sr-only">Password</label>
+                <input type="password" class="form-control" id="inputPassword2" placeholder="Пароль">
+            </div>
+            <button type="submit" class="btn btn-primary">Войти</button>
+        </form>
     {% endif %}
-    <h1><a href="/">Django Girls Blog</a></h1>
-</div>
-<div class="content container">
+</nav>
+<div class="content container pt-3">
     <div class="row">
         <div class="col-md-8">
             {% block content %}
