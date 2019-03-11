@@ -2,14 +2,14 @@
 {% block content %}
     {% for post in posts %}
         <div class="post">
-            <div class="date">
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <div class="text-muted">
                 <p>Опубликовано: {{ post.published_date }}</p>
             </div>
-            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <div class="myclass">
+            <div class="myclass text-left">
                 <p>{{ post.text|linebreaksbr }}
                     {% if post.image %}
-                        <img src="{{ post.image.url }}" width="100%"></p>
+                        <img src="{{ post.image.url }}" class="img-fluid rounded mx-auto d-block "></p>
                     {% endif %}
             </div>
         </div>

@@ -1,9 +1,11 @@
+
+10 lines (8 sloc) 312 Bytes
 {% extends 'blog/base.html' %}
 
 {% block content %}
     <h1>Сохдать пост</h1>
     <form method="POST" class="post-form" enctype="multipart/form-data" >{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Сохранить</button>
+        <button type="submit" class="btn btn-success">Сохранить</button>
     </form>
 {% endblock %}
